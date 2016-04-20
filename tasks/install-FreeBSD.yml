@@ -1,0 +1,11 @@
+---
+
+- name: Install hadoop
+  pkgng:
+    name: hadoop2
+    state: present
+
+- name: fix status command in namenode
+  patch:
+    src: patch-namenode
+    dest: /usr/local/etc/rc.d/namenode
