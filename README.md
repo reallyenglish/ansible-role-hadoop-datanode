@@ -1,4 +1,4 @@
-ansible-role-hadoop-namenode
+ansible-role-hadoop-datanode
 ============================
 
 Install datanode of hadoop.
