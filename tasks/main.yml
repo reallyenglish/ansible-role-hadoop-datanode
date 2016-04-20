@@ -26,7 +26,7 @@
 
 - name: Create dfs.datanode.name.dir
   file:
-    path: "{{ hadoop_datanode_dfs_datanode_name_dir }}"
+    path: "{{ hadoop_datanode_dfs_datanode_data_dir }}"
     mode: 0755
     owner: "{{ hadoop_datanode_user }}"
     group: "{{ hadoop_datanode_group }}"
@@ -34,17 +34,6 @@
   notify: Restart datanode
 
 - include: configure-xml.yml
-
-- name: Register formated or not
-  shell: "ls -1 {{ hadoop_datanode_dfs_datanode_name_dir }}"
-  register: ls_output
-  changed_when: False
-
-- command: "hadoop datanode -format"
-  become: yes
-  become_user: "{{ hadoop_datanode_user }}"
-  become_method: sudo
-  when: not ls_output.stdout_lines
 
 - name: Start hadoop datanode
   service:

@@ -9,3 +9,8 @@
   patch:
     src: patch-namenode
     dest: /usr/local/etc/rc.d/namenode
+
+- name: fix status command in datanode
+  patch:
+    src: patch-datanode
+    dest: /usr/local/etc/rc.d/datanode
