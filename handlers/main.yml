@@ -1,0 +1,7 @@
+---
+
+- name: Restart datanode
+  service:
+    name: "{{ hadoop_datanode_service }}"
+    state: restarted
+    enabled: yes
