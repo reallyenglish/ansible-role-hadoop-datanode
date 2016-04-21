@@ -26,3 +26,14 @@
     remote_src: yes
     src: /tmp/patch-datanode
     dest: /usr/local/etc/rc.d/datanode
+
+- name: upload patch-nodemanager to remote XXX https://github.com/ansible/ansible-modules-extras/issues/338
+  copy:
+    src: patch-nodemanager
+    dest: /tmp/patch-nodemanager
+
+- name: fix status command in nodemanager
+  patch:
+    remote_src: yes
+    src: /tmp/patch-nodemanager
+    dest: /usr/local/etc/rc.d/nodemanager
