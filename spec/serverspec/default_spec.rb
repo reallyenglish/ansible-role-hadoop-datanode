@@ -10,6 +10,7 @@ require 'serverspec'
 # tcp6  0/0/128        *.22     
 package = 'hadoop'
 service = 'datanode'
+nodemanager_service= 'nodemanager'
 user    = 'hdfs'
 group   = 'hadoop'
 ports   = [ 50010, 50020, 50075 ]
@@ -110,6 +111,12 @@ describe service(service) do
   it { should be_running }
   it { should be_enabled }
 end
+
+describe service(nodemanager_service) do
+  it { should be_running }
+  it { should be_enabled }
+end
+
 
 ports.each do |p|
   describe port(p) do

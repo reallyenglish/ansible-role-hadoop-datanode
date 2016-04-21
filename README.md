@@ -18,6 +18,7 @@ Role Variables
 | hadoop\_datanode\_log\_dir | path to log dir | /var/log/hadoop |
 | hadoop\_datanode\_db\_dir | path to db dir | "{{ \_\_hadoop\_datanode\_db\_dir }}" |
 | hadoop\_datanode\_service | service name | "{{ \_\_hadoop\_datanode\_service }}" |
+| hadoop\_datanode\_nodemanager\_service | nodemanager service name | "{{ \_\_hadoop\_datanode\_nodemanager\_service }}" |
 | hadoop\_datanode\_conf\_dir | path to config dir | "{{ \_\_hadoop\_datanode\_conf\_dir }}" |
 | hadoop\_datanode\_flags | not used | "" |
 | hadoop\_datanode\_dfs\_datanode\_data\_dir | path to dfs.datanode.data.dir | "{{ hadoop\_datanode\_db\_dir }}/dfs/data" |

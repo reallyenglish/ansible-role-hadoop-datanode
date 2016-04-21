@@ -13,7 +13,9 @@
     owner: root
     group: "{{ hadoop_datanode_group }}"
     state: directory
-  notify: Restart datanode
+  notify:
+    - Restart datanode
+    - Restart nodemanager
 
 - name: Create db directory
   file:
@@ -22,7 +24,9 @@
     owner: "{{ hadoop_datanode_user }}"
     group: "{{ hadoop_datanode_group }}"
     state: directory
-  notify: Restart datanode
+  notify:
+    - Restart datanode
+    - Restart nodemanager
 
 - name: Create dfs.datanode.name.dir
   file:
@@ -31,7 +35,9 @@
     owner: "{{ hadoop_datanode_user }}"
     group: "{{ hadoop_datanode_group }}"
     state: directory
-  notify: Restart datanode
+  notify:
+    - Restart datanode
+    - Restart nodemanager
 
 - include: configure-xml.yml
 
@@ -39,10 +45,18 @@
   template:
     src: slaves.j2
     dest: "{{ hadoop_datanode_conf_dir }}/slaves"
-  notify: Restart datanode
+  notify:
+    - Restart datanode
+    - Restart nodemanager
 
 - name: Start hadoop datanode
   service:
     name: "{{ hadoop_datanode_service }}"
+    enabled: true
+    state: started
+
+- name: Start hadoop nodemanager
+  service:
+    name: "{{ hadoop_datanode_nodemanager_service }}"
     enabled: true
     state: started

@@ -5,3 +5,9 @@
     name: "{{ hadoop_datanode_service }}"
     state: restarted
     enabled: yes
+
+- name: Restart nodemanager
+  service:
+    name: "{{ hadoop_datanode_nodemanager_service }}"
+    state: restarted
+    enabled: yes
