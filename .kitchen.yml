@@ -23,6 +23,8 @@ platforms:
     driver:
       box: trombik/ansible-freebsd-10.3-amd64
       box_check_update: false
+      network:
+        - ["forwarded_port", {guest: 50070, host: 50070}]
     driver_config:
       ssh:
         shell: '/bin/sh'
