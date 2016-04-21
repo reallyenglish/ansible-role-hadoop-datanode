@@ -35,6 +35,12 @@
 
 - include: configure-xml.yml
 
+- name: Create slaves file
+  template:
+    src: slaves.j2
+    dest: "{{ hadoop_datanode_conf_dir }}/slaves"
+  notify: Restart datanode
+
 - name: Start hadoop datanode
   service:
     name: "{{ hadoop_datanode_service }}"
