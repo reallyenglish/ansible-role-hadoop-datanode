@@ -5,12 +5,24 @@
     name: hadoop2
     state: present
 
+- name: upload patch-namenode to remote XXX https://github.com/ansible/ansible-modules-extras/issues/338
+  copy:
+    src: patch-namenode
+    dest: /tmp/patch-namenode
+
 - name: fix status command in namenode
   patch:
-    src: patch-namenode
+    remote_src: yes
+    src: /tmp/patch-namenode
     dest: /usr/local/etc/rc.d/namenode
+
+- name: upload patch-datanode to remote XXX https://github.com/ansible/ansible-modules-extras/issues/338
+  copy:
+    src: patch-datanode
+    dest: /tmp/patch-datanode
 
 - name: fix status command in datanode
   patch:
-    src: patch-datanode
+    remote_src: yes
+    src: /tmp/patch-datanode
     dest: /usr/local/etc/rc.d/datanode
