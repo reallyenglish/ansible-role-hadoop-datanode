@@ -1,0 +1,3 @@
+[submodule "extra_roles/ansible-role-hadoop-namenode"]
+	path = extra_roles/ansible-role-hadoop-namenode
+	url = git@github.com:reallyenglish/ansible-role-hadoop-namenode.git

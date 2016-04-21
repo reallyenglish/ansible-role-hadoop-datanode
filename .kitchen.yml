@@ -12,6 +12,7 @@ provisioner:
   ansible_extra_flags: <%= ENV['ANSIBLE_EXTRA_FLAGS'] %>
   http_proxy: <%= ENV['ANSIBLE_PROXY'] %>
   additional_copy_path:
+    - extra_roles/ansible-role-hadoop-namenode
     - extra_modules
     - filter_plugins
   extra_vars:
