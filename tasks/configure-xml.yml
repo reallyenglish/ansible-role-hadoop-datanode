@@ -5,6 +5,9 @@
     src: core-site.xml.j2
     dest: "{{ hadoop_datanode_core_site_file }}"
     validate: "xmllint %s"
+  notify:
+    - Restart datanode
+    - Restart nodemanager
   when: hadoop_datanode_core_site_file
 
 - name: "Configure {{ hadoop_datanode_hdfs_site_file }}"
@@ -12,6 +15,9 @@
     src: hdfs-site.xml.j2
     dest: "{{ hadoop_datanode_hdfs_site_file }}"
     validate: "xmllint %s"
+  notify:
+    - Restart datanode
+    - Restart nodemanager
   when: hadoop_datanode_hdfs_site_file
 
 - name: "Configure {{ hadoop_datanode_mapred_site_file }}"
@@ -19,6 +25,9 @@
     src: mapred-site.xml.j2
     dest: "{{ hadoop_datanode_mapred_site_file }}"
     validate: "xmllint %s"
+  notify:
+    - Restart datanode
+    - Restart nodemanager
   when: hadoop_datanode_mapred_site_file
 
 - name: "Configure {{ hadoop_namenode_yarn_site_file }}"
@@ -26,4 +35,7 @@
     src: yarn-site.xml.j2
     dest: "{{ hadoop_namenode_yarn_site_file }}"
     validate: "xmllint %s"
+  notify:
+    - Restart datanode
+    - Restart nodemanager
   when: hadoop_namenode_yarn_site_file
