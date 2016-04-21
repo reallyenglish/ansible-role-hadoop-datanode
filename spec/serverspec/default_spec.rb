@@ -91,7 +91,7 @@ end
 
 describe file(db_dir) do
   it { should exist }
-  it { should be_mode 755 }
+  it { should be_mode 775 }
   it { should be_owned_by user }
   it { should be_grouped_into group }
 end

@@ -20,7 +20,7 @@
 - name: Create db directory
   file:
     path: "{{ hadoop_datanode_db_dir }}"
-    mode: 0755
+    mode: 0775
     owner: "{{ hadoop_datanode_user }}"
     group: "{{ hadoop_datanode_group }}"
     state: directory
