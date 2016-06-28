@@ -2,5 +2,5 @@ __hadoop_datanode_user: hdfs
 __hadoop_datanode_group: hadoop
 __hadoop_datanode_db_dir: /var/db/datanode
 __hadoop_datanode_service: datanode
-__hadoop_datanode_conf_dir: /usr/local/etc/hadoop
+__hadoop_conf_dir: /usr/local/etc/hadoop
 __hadoop_datanode_nodemanager_service: nodemanager
