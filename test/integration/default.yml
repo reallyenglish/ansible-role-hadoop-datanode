@@ -16,6 +16,7 @@
     - ansible-role-hadoop-namenode
     - ansible-role-hadoop-datanode
   vars:
+    hadoop_datanode_db_dir: /var/db/datanode
     hadoop_config:
       slaves:
         - localhost
@@ -32,7 +33,7 @@
       hdfs_site:
         -
           - name: dfs.namenode.name.dir
-          - value: "${hadoop.tmp.dir}/dfs/name"
+          - value: "file://{{ hadoop_namenode_dfs_namenode_name_dir }}"
         - 
           - name: dfs.blocksize
           - value: 268435456
@@ -41,7 +42,7 @@
           - value: 100
         -
           - name: dfs.datanode.data.dir
-          - value: "${hadoop.tmp.dir}/dfs/data"
+          - value: "file://{{ hadoop_datanode_dfs_datanode_data_dir }}"
       yarn_site:
         -
           - name: yarn.resourcemanager.scheduler.class

@@ -22,7 +22,7 @@ slaves_file = '/etc/hadoop/slaves'
 case os[:family]
 when 'freebsd'
   package = 'hadoop2'
-  db_dir = '/var/db/hadoop'
+  db_dir = '/var/db/datanode'
   conf_dir = '/usr/local/etc/hadoop'
   slaves_file = '/usr/local/etc/hadoop/slaves'
 end
@@ -51,12 +51,12 @@ describe file(hdfs_site_xml) do
   it { should be_file }
   its(:content) { should match Regexp.escape('<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>') }
   its(:content) { should match Regexp.escape('<name>dfs.namenode.name.dir</name>') }
-  its(:content) { should match Regexp.escape('<value>${hadoop.tmp.dir}/dfs/name</value>') }
+  its(:content) { should match Regexp.escape('<value>file:///var/db/hadoop/dfs/name</value>') }
   its(:content) { should match Regexp.escape('<name>dfs.blocksize</name>') }
   its(:content) { should match Regexp.escape('<value>268435456</value>') }
   its(:content) { should match Regexp.escape('<name>dfs.namenode.handler.count</name>') }
   its(:content) { should match Regexp.escape('<name>dfs.datanode.data.dir</name>') }
-  its(:content) { should match Regexp.escape("<value>${hadoop.tmp.dir}/dfs/data</value>") }
+  its(:content) { should match Regexp.escape("<value>file:///var/db/datanode/dfs/data</value>") }
 end
 
 describe file(mapred_site_xml) do
@@ -85,7 +85,7 @@ end
 describe file(log_dir) do
   it { should exist }
   it { should be_mode 775 }
-  it { should be_owned_by 'root' }
+  it { should be_owned_by user }
   it { should be_grouped_into group }
 end
 
