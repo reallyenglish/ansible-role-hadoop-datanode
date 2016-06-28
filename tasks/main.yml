@@ -10,7 +10,7 @@
   file:
     path: "{{ hadoop_datanode_log_dir }}"
     mode: 0775
-    owner: root
+    owner: "{{ hadoop_datanode_user }}"
     group: "{{ hadoop_datanode_group }}"
     state: directory
   notify:
