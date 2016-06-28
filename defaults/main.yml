@@ -4,14 +4,13 @@ hadoop_datanode_log_dir: /var/log/hadoop
 hadoop_datanode_db_dir: "{{ __hadoop_datanode_db_dir }}"
 hadoop_datanode_service: "{{ __hadoop_datanode_service }}"
 hadoop_datanode_nodemanager_service: "{{ __hadoop_datanode_nodemanager_service }}"
-hadoop_datanode_conf_dir: "{{ __hadoop_datanode_conf_dir }}"
 hadoop_datanode_flags: ""
 
 hadoop_datanode_dfs_datanode_data_dir: "{{ hadoop_datanode_db_dir }}/dfs/data"
 
 hadoop_conf_dir: "{{ __hadoop_conf_dir }}"
-hadoop_core_site_file: "{{ hadoop_datanode_conf_dir }}/core-site.xml"
-hadoop_hdfs_site_file: "{{ hadoop_datanode_conf_dir }}/hdfs-site.xml"
-hadoop_mapred_site_file: "{{ hadoop_datanode_conf_dir }}/mapred-site.xml"
-hadoop_yarn_site_file: "{{ hadoop_datanode_conf_dir }}/yarn-site.xml"
+hadoop_core_site_file: "{{ hadoop_conf_dir }}/core-site.xml"
+hadoop_hdfs_site_file: "{{ hadoop_conf_dir }}/hdfs-site.xml"
+hadoop_mapred_site_file: "{{ hadoop_conf_dir }}/mapred-site.xml"
+hadoop_yarn_site_file: "{{ hadoop_conf_dir }}/yarn-site.xml"
 hadoop_config: {}
