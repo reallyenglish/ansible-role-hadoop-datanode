@@ -10,7 +10,7 @@
   file:
     path: "{{ hadoop_datanode_log_dir }}"
     mode: 0775
-    owner: root
+    owner: "{{ hadoop_datanode_user }}"
     group: "{{ hadoop_datanode_group }}"
     state: directory
   notify:
@@ -31,7 +31,7 @@
 - name: Create dfs.datanode.name.dir
   file:
     path: "{{ hadoop_datanode_dfs_datanode_data_dir }}"
-    mode: 0755
+    mode: 0700
     owner: "{{ hadoop_datanode_user }}"
     group: "{{ hadoop_datanode_group }}"
     state: directory
