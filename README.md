@@ -1,15 +1,12 @@
-ansible-role-hadoop-datanode
-============================
+# ansible-role-hadoop-datanode
 
 Install datanode of hadoop.
 
-Requirements
-------------
+# Requirements
 
 None
 
-Role Variables
---------------
+# Role Variables
 
 | variable | description | default |
 |----------|-------------|---------|
@@ -29,14 +26,12 @@ Role Variables
 | hadoop\_config | a hash of xml config (see the example below) | {} |
 
 
-Dependencies
-------------
+# Dependencies
 
 dict2xml is bundled in the role, with modifications, mostly removing six dependency. dict2xml is available at https://github.com/delfick/python-dict2xml.
 
-Example Playbook
-----------------
-
+# Example Playbook
+```yaml
     - hosts: all
       pre_tasks:
         # XXX java.net.InetAddress.getLocalHost throws an exception without this
@@ -103,13 +98,12 @@ Example Playbook
             -
               - name: yarn.scheduler.capacity.root.default.maximum-capacity
               - value: 100
+```
 
-License
--------
+# License
 
 BSD
 
-Author Information
-------------------
+# Author Information
 
 Tomoyuki Sakurai <tomoyukis@reallyenglish.com>

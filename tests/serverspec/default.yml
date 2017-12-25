@@ -3,15 +3,8 @@
     # XXX java.net.InetAddress.getLocalHost throws an exception without this
     - shell: echo "127.0.0.1 localhost {{ ansible_hostname }}" > /etc/hosts
       changed_when: False
-    # XXX the latest haddop2, with "status" patches, is not available in the official repo
-    - file:
-        path: /usr/local/etc/pkg/repos
-        state: directory
-      changed_when: false
-    - shell: "echo 'FreeBSD: { enabled:  no }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
-      changed_when: false
-    - shell: "echo 'reallyenglish: { url: \"pkg+http://10.3.build.reallyenglish.com/${ABI}\", mirror_type: \"srv\", signature_type: \"none\", enabled:  yes }' > /usr/local/etc/pkg/repos/reallyenglish.conf"
-      changed_when: false
+    - command: hostname -s localhost
+      changed_when: False
   roles:
     - ansible-role-hadoop-namenode
     - ansible-role-hadoop-datanode
@@ -21,7 +14,7 @@
       slaves:
         - localhost
       core_site:
-        - 
+        -
           - name: fs.defaultFS
           - value: 'hdfs://localhost/'
         -
@@ -33,12 +26,13 @@
       hdfs_site:
         -
           - name: dfs.namenode.name.dir
-          - value: "file://{{ hadoop_namenode_dfs_namenode_name_dir }}"
-        - 
+            # - value: "file://{{ hadoop_namenode_dfs_namenode_name_dir }}"
+          - value: "file:///var/db/hadoop/dfs/name"
+        -
           - name: dfs.blocksize
           - value: 268435456
         -
-          - name: dfs.namenode.handler.count 
+          - name: dfs.namenode.handler.count
           - value: 100
         -
           - name: dfs.datanode.data.dir

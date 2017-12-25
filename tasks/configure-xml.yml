@@ -8,7 +8,9 @@
   notify:
     - Restart datanode
     - Restart nodemanager
-  when: hadoop_core_site_file
+  when:
+    - hadoop_core_site_file is defined
+    - hadoop_core_site_file | length > 0
 
 - name: "Configure {{ hadoop_hdfs_site_file }}"
   template:
@@ -18,7 +20,9 @@
   notify:
     - Restart datanode
     - Restart nodemanager
-  when: hadoop_hdfs_site_file
+  when:
+    - hadoop_hdfs_site_file is defined
+    - hadoop_hdfs_site_file | length > 0
 
 - name: "Configure {{ hadoop_mapred_site_file }}"
   template:
@@ -28,7 +32,9 @@
   notify:
     - Restart datanode
     - Restart nodemanager
-  when: hadoop_mapred_site_file
+  when:
+    - hadoop_mapred_site_file is defined
+    - hadoop_mapred_site_file | length > 0
 
 - name: "Configure {{ hadoop_yarn_site_file }}"
   template:
@@ -38,4 +44,6 @@
   notify:
     - Restart datanode
     - Restart nodemanager
-  when: hadoop_yarn_site_file
+  when:
+    - hadoop_yarn_site_file is defined
+    - hadoop_yarn_site_file | length > 0
